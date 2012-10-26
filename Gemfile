@@ -32,10 +32,6 @@ group :test, :development do
   gem "factory_girl", "~> 2.0"
 end
 
-group :development do
-  gem "rails3-generators", "0.17"
-end
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

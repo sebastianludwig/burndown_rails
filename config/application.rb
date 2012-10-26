@@ -6,7 +6,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -66,8 +66,7 @@ module Burndown
     config.assets.version = '1.0'
     
     config.generators do |g|
-      g.test_framework :rspec, :fixture => true
-      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
+      g.test_framework :rspec, :fixture => false
     end
   end
 end
