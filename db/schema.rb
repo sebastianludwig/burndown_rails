@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026203237) do
+ActiveRecord::Schema.define(:version => 20121026214830) do
+
+  create_table "data_points", :force => true do |t|
+    t.integer  "graph_id"
+    t.date     "date"
+    t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "graphs", :force => true do |t|
+    t.integer  "sprint_id"
+    t.string   "label"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "sprints", :force => true do |t|
     t.integer  "number"

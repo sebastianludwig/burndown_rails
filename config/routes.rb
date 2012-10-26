@@ -1,4 +1,12 @@
 Burndown::Application.routes.draw do
+  get "sprints_controller/index"
+
+  get "sprints_controller/show"
+
+  get "sprints_controller/new"
+
+  get "sprints_controller/start"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
