@@ -1,4 +1,4 @@
-class SprintsControllerController < ApplicationController
+class SprintsController < ApplicationController
   def index
   end
 
