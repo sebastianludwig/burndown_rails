@@ -3,6 +3,10 @@ Burndown::Application.routes.draw do
     member do
       get 'show', :constraints => { :id => /\d+/ }
     end
+    
+    resources :graphs, :only => [:index, :show] do
+      resources :data_points, :only => [:index, :create, :destroy], :as => 'points'
+    end
   end
 
   # The priority is based upon order of creation:

@@ -6,11 +6,7 @@ describe 'routing' do
   end
   
   it "routes /sprint/:number to sprints#show" do
-    expect(:get => "/sprints/4").to route_to(
-      :controller => "sprints",
-      :action => "show",
-      :id => "4"
-    )
+    expect(:get => "/sprints/4").to route_to("sprints#show", :id => "4")
   end
   
   describe 'creation' do
@@ -19,10 +15,7 @@ describe 'routing' do
     end
     
     it "post /sprints to sprints#create" do
-      expect(:post => "/sprints").to route_to(
-        :controller => "sprints", 
-        :action => "create"
-      )
+      expect(:post => "/sprints").to route_to("sprints#create")
     end
   end
   
