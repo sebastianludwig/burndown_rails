@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'sprints' do
+describe 'sprint request' do
   describe 'index' do
     before :each do
       @sprints = create_list(:sprint, 10)

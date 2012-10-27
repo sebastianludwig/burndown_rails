@@ -1,13 +1,20 @@
 require 'spec_helper'
 
-describe 'routing' do
+describe 'Sprint routing' do
   it "routes /sprints" do
     expect(:get => "/sprints").to be_routable
   end
   
-  it "routes /sprint/:number to sprints#show" do
-    expect(:get => "/sprints/4").to route_to("sprints#show", :id => "4")
+  describe 'show' do
+    it "routes /sprint/:number" do
+      expect(:get => "/sprints/4").to route_to("sprints#show", :id => "4")
+    end
+    
+    it "does not allow non-digit IDs" do
+      expect(:get => "/sprints/bam").not_to be_routable
+    end
   end
+  
   
   describe 'creation' do
     it "does not have a new path" do

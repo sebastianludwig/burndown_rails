@@ -1,11 +1,13 @@
 Burndown::Application.routes.draw do
   resources :sprints, :only => [:index, :destroy, :create] do
-    member do
-      get 'show', :constraints => { :id => /\d+/ }
-    end
+    get 'show', :on => :member, :constraints => { :id => /\d+/ }
     
-    resources :graphs, :only => [:index, :show] do
-      resources :data_points, :only => [:index, :create, :destroy], :as => 'points'
+    resources :graphs, :only => [:index] do
+      get 'show', :on => :member, :constraints => { :id => /\d+/ }
+      
+      resources :data_points, :only => [:index, :create], :as => 'points' do
+        delete 'destroy', :on => :member, :constraints => { :id => /\d+/ }
+      end
     end
   end
 

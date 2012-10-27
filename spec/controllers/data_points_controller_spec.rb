@@ -20,9 +20,9 @@ describe DataPointsController do
     end
   end
 
-  describe "GET 'destroy'" do
+  describe "DELETE 'destroy'" do
     it "returns http success" do
-      get 'destroy', route_parameter
+      delete 'destroy', route_parameter
       response.should be_success
     end
   end
