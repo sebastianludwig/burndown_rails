@@ -3,4 +3,6 @@ class Graph < ActiveRecord::Base
   
   belongs_to :sprint
   has_many :data_points
+  
+  validates_presence_of :label
 end
