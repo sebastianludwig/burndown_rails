@@ -1,0 +1,18 @@
+<h1>Sprints</h1>
+
+<%= link_to "Start new sprint", sprints_path, :method => :post %>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Actions</th>
+  </tr>
+  
+<% @sprints.each do |sprint| %>
+  <tr>
+    <td><%= sprint.number %></td>
+    <td></td>
+  </tr>
+<% end %>
+
+</table>

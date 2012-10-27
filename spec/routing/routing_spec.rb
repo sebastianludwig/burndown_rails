@@ -13,18 +13,26 @@ describe 'routing' do
     )
   end
   
-  it "does not allow editing" do
-    expect(:get => "/sprints/4/edit").not_to be_routable
+  describe 'creation' do
+    it "does not have a new path" do
+      expect(:get => "/sprints/new").not_to be_routable
+    end
+    
+    it "post /sprints to sprints#create" do
+      expect(:post => "/sprints").to route_to(
+        :controller => "sprints", 
+        :action => "create"
+      )
+    end
   end
   
-  it "does not allow updating" do
-    expect(:put => "/sprints/4").not_to be_routable
-  end
+  describe 'editing' do
+    it "does not allow editing" do
+      expect(:get => "/sprints/4/edit").not_to be_routable
+    end
   
-  it "routes /sprints/start to sprints#new" do
-    expect(:get => "/sprints/start").to route_to(
-      :controller => "sprints", 
-      :action => "new"
-    )
-  end
+    it "does not allow updating" do
+      expect(:put => "/sprints/4").not_to be_routable
+    end
+  end  
 end

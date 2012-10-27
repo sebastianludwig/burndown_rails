@@ -1,7 +1,8 @@
 Burndown::Application.routes.draw do
-  resources :sprints, 
-            :except => [:edit, :update], 
-            :path_names => { :new => 'start' } do
+  resources :sprints, :only => [:index, :destroy, :create] do
+    member do
+      get 'show', :constraints => { :id => /\d+/ }
+    end
   end
 
   # The priority is based upon order of creation:
