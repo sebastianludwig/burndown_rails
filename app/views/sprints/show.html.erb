@@ -1,5 +1,7 @@
 <h1>Sprint <%= @sprint.number %></h1>
 
-<% @sprint.graphs.each do |graph| %>
-  <%= graph.label %>
-<% end %>
+<ul>
+  <% @sprint.graphs.each do |graph| %>
+    <li><%= graph.label %></li>
+  <% end %>
+</ul>

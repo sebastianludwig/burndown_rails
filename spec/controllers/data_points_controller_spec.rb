@@ -13,9 +13,9 @@ describe DataPointsController do
     end
   end
 
-  describe "GET 'create'" do
+  describe "POST 'create'" do
     it "returns http success" do
-      get 'create', route_parameter
+      post 'create', route_parameter
       response.should be_success
     end
   end
