@@ -9,7 +9,11 @@ class SprintsController < ApplicationController
 
   def create
     @sprint = Sprint.new
-    @sprint.number = Sprint.current.number + 1
+    @sprint.number = Sprint.current ? Sprint.current.number + 1 : 1
+    
+    @sprint.graphs.build(:label => "Story Points")
+    @sprint.graphs.build(:label => "Tasks")
+    @sprint.graphs.build(:label => "Bugs")
     
     if @sprint.save
       flash[:notice] = "New sprint started"

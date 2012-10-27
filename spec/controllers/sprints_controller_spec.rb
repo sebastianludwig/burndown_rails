@@ -15,5 +15,39 @@ describe SprintsController do
       response.should be_success
     end
   end
+  
+  describe "POST create" do
+    context "success" do
+      before :each do
+        @sprint = build(:sprint)
+        Sprint.stub(:new) { @sprint }
+        post :create
+      end
+      
+      it "redirects" do
+        response.should redirect_to sprint_path(@sprint)
+      end
+      
+      it "creates graphs" do
+        @sprint.graphs.count.should > 0
+      end
+    end
+    
+    context "failure" do
+      before :each do
+        @sprint = stub_model(Sprint, :save => false)
+        Sprint.stub(:new) { @sprint }
+        post :create
+      end
+      
+      it "redirects" do
+        response.should redirect_to sprints_path
+      end
+      
+      it "sets flash message" do
+        flash[:error].should_not be_empty
+      end
+    end
+  end
 
 end
