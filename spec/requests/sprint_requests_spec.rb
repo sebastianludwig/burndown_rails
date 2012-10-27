@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'sprint request' do
-  describe 'index' do
+  describe '#index' do
     before :each do
       @sprints = create_list(:sprint, 10)
       visit(sprints_path)
@@ -19,14 +19,14 @@ describe 'sprint request' do
     end
   end
   
-  describe 'show' do
+  describe '#show' do
     it 'lists graphs' do
       @sprint = create(:sprint_with_graphs)
       visit sprint_path(@sprint)
       
-      page.should have_content 'Bugs'
-      page.should have_content 'Tasks'
-      page.should have_content 'Story points'
+      @sprint.graphs.each do |graph|
+        page.should have_content graph.label
+      end
     end
   end
 end

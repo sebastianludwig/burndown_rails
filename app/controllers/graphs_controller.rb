@@ -4,5 +4,6 @@ class GraphsController < ApplicationController
   end
 
   def show
+    @graph = Graph.find(params[:id])
   end
 end

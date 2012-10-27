@@ -28,9 +28,19 @@ describe GraphsController do
   end
 
   describe "GET 'show'" do
+    before :each do
+      graph = create(:graph)
+      Graph.stub(:find) { graph }
+    end
+    
     it "returns http success" do
       get 'show', route_parameters
       response.should be_success
+    end
+    
+    it 'assigns graph' do
+      get 'show', route_parameters
+      expect(assigns(:graph)).to be
     end
   end
 
