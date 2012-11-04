@@ -1,2 +1,10 @@
-<h1>DataPoints#index</h1>
-<p>Find me in app/views/data_points/index.html.erb</p>
+<h1>Data points</h1>
+
+<table>
+  <tr>
+    <% @points.each do |point| %>
+      <td><%= point.date %></td>
+      <td><%= point.value %></td>
+    <% end %>
+  </tr>
+</table>
