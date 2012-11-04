@@ -44,3 +44,30 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+RSpec::Matchers.define :have_one_that do |matcher|
+  match do |collection|
+    result = false
+    collection.each do |element|
+      if matcher.matches?(element)
+        result = true 
+        break
+      end
+    end
+    result
+  end
+  
+  failure_message_for_should do |actual|
+    "expected #{actual.inspect} to have one element that #{matcher.description}"
+  end
+end
+
+RSpec::Matchers.define :conforms_to do |proc|
+  match do |actual|
+    proc.call(actual)
+  end
+  
+  description do
+    "conforms to the given block"
+  end
+end
