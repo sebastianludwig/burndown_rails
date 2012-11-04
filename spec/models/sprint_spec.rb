@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Sprint do
+  it { should have_many(:graphs).dependent(:destroy) }
+  
   describe ".current" do
     it "returns the sprint with the highest number" do
       create(:sprint, :number => 1)
