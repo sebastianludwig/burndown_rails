@@ -2,22 +2,18 @@ require 'spec_helper'
 
 describe GraphsController do
 
-  def route_parameters
-    { :sprint_id => '4', :id => 2 }
-  end
-
-  describe "GET 'index'" do
+  describe "GET index" do
     before :each do
       @sprints = create_list(:sprint_with_graphs, 5)
     end
     
     it "returns http success" do
-      get 'index', route_parameters
+      get 'index', :sprint_id => 4
       response.should be_success
     end
     
     it 'assigns graphs' do
-      get 'index', route_parameters
+      get 'index', :sprint_id => 4
       expect(assigns(:graphs)).to be
     end
     
@@ -27,19 +23,19 @@ describe GraphsController do
     end
   end
 
-  describe "GET 'show'" do
+  describe "GET show" do
     before :each do
       graph = create(:graph)
       Graph.stub(:find) { graph }
     end
     
     it "returns http success" do
-      get 'show', route_parameters
+      get 'show', { :sprint_id => '4', :id => 2 }
       response.should be_success
     end
     
     it 'assigns graph' do
-      get 'show', route_parameters
+      get 'show', { :sprint_id => '4', :id => 2 }
       expect(assigns(:graph)).to be
     end
   end
