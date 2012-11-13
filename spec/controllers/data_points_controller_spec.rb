@@ -18,7 +18,7 @@ describe DataPointsController do
     it "assigns data points of sprint" do
       expect(assigns(:points).count).to be == 3
       expect(assigns(:points).first.graph.sprint).to be == @sprint
-    end    
+    end
   end
 
   describe "POST create" do
