@@ -4,7 +4,7 @@ class SprintsController < ApplicationController
   end
 
   def show
-    @sprint = Sprint.find_by_id(params[:id])
+    @sprint = Sprint.find(params[:id])
   end
 
   def create
