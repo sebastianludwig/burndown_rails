@@ -25,18 +25,29 @@ describe GraphsController do
 
   describe "GET show" do
     before :each do
-      graph = create(:graph)
-      Graph.stub(:find) { graph }
+      @graph = create(:graph)
+      Graph.stub(:find) { @graph }
     end
     
     it "returns http success" do
-      get 'show', { :sprint_id => '4', :id => 2 }
+      get 'show', :sprint_id => '4', :id => 2
       response.should be_success
     end
     
     it 'assigns graph' do
-      get 'show', { :sprint_id => '4', :id => 2 }
+      get 'show', :sprint_id => '4', :id => 2
       expect(assigns(:graph)).to be
+    end
+    
+    describe "JSON" do
+      render_views
+      
+      it "returns JSON" do
+        get 'show', :sprint_id => '4', :id => 2, :format => :json
+        json = JSON.parse(response.body)
+        expect(json["graph"]["label"]).to be == @graph.label
+        expect(json["graph"]["points"].count).to be == @graph.points.count
+      end
     end
   end
 
