@@ -45,6 +45,8 @@ describe GraphsController do
       it "returns JSON" do
         get 'show', :sprint_id => '4', :id => 2, :format => :json
         json = JSON.parse(response.body)
+        
+        expect(json["graph"]["id"]).to be == @graph.id
         expect(json["graph"]["label"]).to be == @graph.label
         expect(json["graph"]["points"].count).to be == @graph.points.count
       end

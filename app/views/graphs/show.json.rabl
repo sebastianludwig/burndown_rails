@@ -1,6 +1,6 @@
 object @graph
 
-attribute :label
+attribute :id, :label
 
 child :points => :points do
   attributes :value, :date

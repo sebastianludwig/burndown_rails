@@ -27,6 +27,7 @@ describe SprintsController do
         get 'show', :id => 0, :format => :json
         json = JSON.parse(response.body)
         
+        expect(json["sprint"]["id"]).to be == @sprint.id
         expect(json["sprint"]["number"]).to be == @sprint.number
         expect(json["sprint"]["graphs"].count).to be == @sprint.graphs.count
       end
