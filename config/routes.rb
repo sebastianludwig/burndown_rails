@@ -1,4 +1,16 @@
 Burndown::Application.routes.draw do
+  namespace :api, :defaults => { :format => :json } do
+    namespace :v1 do
+      resources :sprints, :only => [:index] do
+        get 'show', :on => :member, :constraints => { :id => /\d+/ }
+        
+        resources :graphs, :only => [] do
+          resources :points, :controller => 'data_points', :only => [:create]
+        end
+      end
+    end
+  end
+  
   resources :sprints, :only => [:index, :destroy, :create] do
     get 'show', :on => :member, :constraints => { :id => /\d+/ }
     get 'current', :on => :collection

@@ -18,20 +18,7 @@ describe SprintsController do
     it "returns http success" do
       get 'show', :id => 4
       response.should be_success
-    end
-    
-    describe "JSON" do
-      render_views
-      
-      it "returns JSON" do
-        get 'show', :id => 0, :format => :json
-        json = JSON.parse(response.body)
-        
-        expect(json["sprint"]["id"]).to be == @sprint.id
-        expect(json["sprint"]["number"]).to be == @sprint.number
-        expect(json["sprint"]["graphs"].count).to be == @sprint.graphs.count
-      end
-    end
+    end    
   end
   
   describe "POST create" do

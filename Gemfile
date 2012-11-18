@@ -23,7 +23,8 @@ end
 
 gem 'jquery-rails'
 
-gem 'rabl'
+#gem 'rabl'
+gem 'rabl', :git => 'https://github.com/sebastianludwig/rabl.git'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
