@@ -40,7 +40,7 @@ describe DataPointsController do
         it "with the passed value" do
           post 'create', @route_parameters
           
-          expect(@graph.points).to have_one_that conforms_to proc { |point| point.value == 42 }
+          expect(@graph.points).to have_one_that satisfy { |point| point.value == 42 }
         end
       
         it "replaces a data point for the same day" do
@@ -49,7 +49,7 @@ describe DataPointsController do
           post 'create', @route_parameters.merge( { :value => 43 } )
           expect(@graph).to have(old_count + 1).points
           
-          expect(@graph.points).to have_one_that conforms_to proc { |point| point.value == 43 }
+          expect(@graph.points).to have_one_that satisfy { |point| point.value == 43 }
         end
       end
       

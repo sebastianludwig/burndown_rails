@@ -61,13 +61,3 @@ RSpec::Matchers.define :have_one_that do |matcher|
     "expected #{actual.inspect} to have one element that #{matcher.description}"
   end
 end
-
-RSpec::Matchers.define :conforms_to do |proc|
-  match do |actual|
-    proc.call(actual)
-  end
-  
-  description do
-    "conforms to the given block"
-  end
-end
