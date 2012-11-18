@@ -1,6 +1,7 @@
 Burndown::Application.routes.draw do
   resources :sprints, :only => [:index, :destroy, :create] do
     get 'show', :on => :member, :constraints => { :id => /\d+/ }
+    get 'current', :on => :collection
     
     resources :graphs, :only => [:index] do
       get 'show', :on => :member, :constraints => { :id => /\d+/ }

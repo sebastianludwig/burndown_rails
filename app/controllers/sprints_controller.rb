@@ -6,6 +6,11 @@ class SprintsController < ApplicationController
   def show
     @sprint = Sprint.find(params[:id])
   end
+  
+  def current
+    @sprint = Sprint.current
+    render :show
+  end
 
   def create
     @sprint = Sprint.new
