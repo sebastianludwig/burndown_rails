@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Api::V1::SprintsController, :type => :controller do
-  describe "GET 'show'" do
+  describe "GET show" do
     before :each do
       @sprint = create(:sprint_with_graph_and_points)
       Sprint.stub(:find) { @sprint }

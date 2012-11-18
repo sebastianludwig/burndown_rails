@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe SprintsController do
 
-  describe "GET 'index'" do
+  describe "GET index" do
     it "returns http success" do
       get 'index'
       response.should be_success
     end
   end
 
-  describe "GET 'show'" do
+  describe "GET show" do
     before :each do
       @sprint = create(:sprint_with_graph_and_points)
       Sprint.stub(:find) { @sprint }

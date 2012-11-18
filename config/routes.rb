@@ -3,6 +3,7 @@ Burndown::Application.routes.draw do
     namespace :v1 do
       resources :sprints, :only => [:index] do
         get 'show', :on => :member, :constraints => { :id => /\d+/ }
+        get 'current', :on => :collection
         
         resources :graphs, :only => [] do
           resources :points, :controller => 'data_points', :only => [:create]
