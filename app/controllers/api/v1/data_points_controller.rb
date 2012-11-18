@@ -6,18 +6,22 @@ module Api
       end
       
       def create
-        [:value, :date].each { |key| return head :bad_request unless params.has_key?(key) }
+        [:value, :date].each do |param| 
+          if not params.has_key?(param)
+            return render :json => ApiError.missing_parameter(param), :status => :bad_request
+          end
+        end
         
         graph = Graph.find(params[:graph_id])
         
         point = graph.points.find_by_date(params[:date])
         if point
           if not point.update_attributes(:value => params[:value], :date => params[:date])
-            return head :internal_server_error
+            return render :json => ApiError.internal_error("Update failed."), :status => :internal_server_error
           end
         else
           if not graph.points.create(:value => params[:value], :date => params[:date])
-            return head :internal_server_error
+            return render :json => ApiError.internal_error("Create failed."), :status => :internal_server_error
           end
         end
         
